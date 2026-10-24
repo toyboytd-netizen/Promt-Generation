@@ -6,7 +6,7 @@ from github import Github
 
 # --- CONFIGURATION (GitHub Secrets se values uthayega) ---
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
-GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
+GITHUB_TOKEN = os.environ.get("Token_git")
 REPO_NAME = "toyboytd-netizen/Promt-Generation"
 
 # 1. Gemini Configure karein
