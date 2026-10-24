@@ -1,0 +1,29 @@
+name: Auto Generate YouTube Short Script
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Yeh rozana ek baar automatically chalega
+  workflow_dispatch: # Yeh aapko manually GitHub par 'Run workflow' ka button dega
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          pip install google-generativeai PyGithub
+
+      - name: Run script
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python generate_short.py
